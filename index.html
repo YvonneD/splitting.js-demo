@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Splitting.js demo</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting-cells.css"
+    />
+    <style>
+      html {
+        height: 100%;
+        display: flex;
+      }
+      body {
+        margin: auto;
+      }
+      html,
+      body {
+        background: #7268;
+        color: #fff;
+        font: 600 10vw;
+      }
+      .splitting .char {
+        animation: slide-in 1s ease-in-out;
+        animation-delay: calc(var(--char-index) * 30ms);
+      }
+      @keyframes slide-in {
+        from {
+          transform: translate3d(63px, 87px, 89px) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      
+#image:hover .cell:nth-child(n){
+    cursor:pointer;
+    animation:fly-in 1s ease-in;  
+    animation-delay:calc(var(--cell-index)*50ms); 
+}
+
+@keyframes fly-in{
+    from{
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <h1 data-splitting>Difficult roads lead to beautiful desinations</h1>
+    <div id="image">
+      <img src="https://source.unsplash.com/random/600x400" alt="random" />
+    </div>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <script>
+      const results = Splitting({
+  target: '#image',
+  by: 'cells',
+  image: true,
+  cols: 2,
+  rows: 2
+});
+    //   const results = Splitting({
+    //     target: "[data-rows], [data-columns]",
+    //     by: "cells",
+    //     image: true
+    //   });
+    //   var cellrow = document.getElementById("image").getAttribute("data-rows");
+    //   var cellcolumn = document
+    //     .getElementById("image")
+    //     .getAttribute("data-columns");
+    //   var cell = cellrow * cellcolumn;
+    //   for (var i = 0; i < cell; i++) {
+    //     results[0].cells[i].style.opacity = "0.5";
+    //     results[0].cells[i].style.animation =
+    //       "slide-in 2s calc(var(--cell-index)*0.1s)";
+    //   }
+    </script>
+  </body>
+</html>
